@@ -8,14 +8,14 @@ Advances in Neural Information Processing Systems (NeurIPS) 2020.
 ## Introduction
 Our paper proposes a local-to-global representation learning algorithm for 3D point cloud data, which is appropriate to handle various geometric transformation, especially rotation. For more details, please refer to our [project page](https://cv.snu.ac.kr/research/rotation_invariant_l2g/).
 
-'''
+```
 @InProceedings{,  
 author = {Kim, Seohyun, Park, Jaeyoo, and Han, Bohyoung},  
 title = {Rotation-Invariant Local-to-Global Representation Learning for 3D Point Cloud},  
 booktitle = {Advances in Neural Information Processing Systems},  
 year = {2020}  
 }  
-'''
+```
 
 ## Usage
 First, please download the ModelNet40 dataset. 
