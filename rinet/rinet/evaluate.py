@@ -168,7 +168,7 @@ def train():
             tf.summary.scalar('bn_decay', bn_decay)
 
             # Get model and loss 
-            pred, end_points, po, tr, po2, tr2 = MODEL.get_model(pointclouds_pl, FLAGS.num_pool, FLAGS.pool_knn1,
+            pred, end_points  = MODEL.get_model(pointclouds_pl, FLAGS.num_pool, FLAGS.pool_knn1,
                                      is_training_pl, bn_decay=bn_decay, flag=flag_pl, flag2=flag2, flag3=flag3,gcn1=gcn1, gcn2=gcn2, gcn3=gcn3, dilation=dilation)
             reg_weight = get_reg_weight(batch)
             loss = MODEL.get_loss(pred, labels_pl, end_points)
@@ -236,10 +236,6 @@ def train():
                'flag2': flag2,
                'flag3': flag3,
                'dilation' : dilation,
-               'po' : po,
-               'tr' : tr,
-               'po2' : po2,
-               'tr2' : tr2,
                'gcn1' : gcn1,
                'gcn2' : gcn2,
                'gcn3' : gcn3
@@ -297,8 +293,8 @@ def eval_one_epoch(sess, ops, test_writer, num_votes):
                 ops['gcn3'] : gcn3
             }
 
-            summary, step, loss_val, pred_val, point_cloud, att_coords1, att_coords2, att_coords3 = sess.run([ops['merged'], ops['step'],
-                                                      ops['loss'], ops['pred'], ops['po'], ops['tr'], ops['po2'], ops['tr2']], feed_dict=feed_dict)
+            summary, step, loss_val, pred_val = sess.run([ops['merged'], ops['step'],
+                                                      ops['loss'], ops['pred']], feed_dict=feed_dict)
 
 
             batch_pred_sum += pred_val 
