@@ -300,7 +300,6 @@ def train_one_epoch(sess, ops, train_writer, epoch):
         start_idx = batch_idx * BATCH_SIZE
         end_idx = (batch_idx+1) * BATCH_SIZE
 
-        pdb.set_trace()
         if FLAGS.rotation:
             rotated_data = current_data[start_idx:end_idx, :, :]
             if FLAGS.so3:
